@@ -51,7 +51,7 @@ $ sudo chmod 600 /etc/NetworkManager/system-connections/*.nmconnection
 
 ### TODO
 
-Wifi does not work yet.
+Wifi does not work yet, need to replace the wireless interface.
 
 ## Converting and burning the image
 
