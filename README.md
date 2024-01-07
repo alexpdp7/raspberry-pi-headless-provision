@@ -17,6 +17,8 @@ The Raspberry Pi connects to the wireless network and you can ssh in.
 
 # Procedure
 
+While this works, I recommend you carry out the procedure at least once with a display and keyboard to diagnose and troubleshoot.
+
 ## Prepare the UEFI microSD
 
 To allow booting standard aarch64 images, follow the instructions from [Pi Firmware Task Force](https://github.com/pftf).
@@ -70,6 +72,15 @@ $ sudo chown root:root /etc/NetworkManager/system-connections/*.nmconnection
 $ sudo chmod 600 /etc/NetworkManager/system-connections/*.nmconnection
 ```
 
+## (Optional) set up a password for your user
+
+You need this if you want to log in via the physical console.
+
+```
+$ ssh $(cloud-run ssh debian-bullseye-arm64)
+$ sudo passwd $(whoami)
+```
+
 ## Converting and burning the image
 
 Shut down the VM.
@@ -91,15 +102,6 @@ $ qemu-img convert ~/.local/share/cloud_run/debian-bullseye-arm64.qcow2 image.ra
 $ sudo dd if=image.raw of=/dev/sdb bs=1M status=progress
 $ sudo eject /dev/sdb
 $ sync; sync; sync
-```
-
-## (Optional) set up a password for your user
-
-You need this if you want to log in via the physical console.
-
-```
-$ ssh $(cloud-run ssh debian-bullseye-arm64)
-$ sudo passwd $(whoami)
 ```
 
 ## Booting
