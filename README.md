@@ -1,6 +1,6 @@
 # Introduction
 
-This document provides a procedure to provision a Raspberry Pi completely headless.
+This document provides a procedure to provision a Raspberry Pi completely headless using cloud images of Linux distributions.
 
 * [cloud-run](https://github.com/alexpdp7/cloud-run) is a qemu wrapper that can download cloud images and spin virtual machines, and create a user with your public key
 * Wireless networking is set up and seeded from existing NetworkManager wireless connections.
@@ -8,6 +8,22 @@ This document provides a procedure to provision a Raspberry Pi completely headle
 
 After this, you can boot the Raspberry Pi.
 The Raspberry Pi connects to the wireless network and you can ssh in.
+
+Raspberry Pi OS has support to do this configuration headlessly too.
+Because Raspberry Pi OS images already have all the necessary packages preinstalled, alterations required to the image are simpler.
+
+This procedure is interesting because in theory you could customize any cloud image in this way, and the resulting images are less Raspberry Pi-specific.
+(You can also adapt this procedure to other hardware, even standard x86 computers.)
+However, there are not many Linux distributions which provide cloud images *and* the necessary Raspberry Pi hardware support.
+Additionally, those Linux distributions might provide images more suitable for Raspberries (e.g. with the right hardware support preinstalled).
+
+So there might be better ways to achieve these objectives.
+However, you might like:
+
+* Using Debian upstream instead of the tuned Raspberry Pi OS
+* Without using the *unofficial* Raspberry Pi Debian images
+* Having a procedure that can be adapted to other devices, which uses less Raspberry Pi customization
+* Learning about cloud images and provisioning
 
 ## TODO
 
