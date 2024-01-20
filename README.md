@@ -97,6 +97,8 @@ Installing the packages (including regenerating the initrd) takes about thirteen
 
 ## Configuring wireless networks
 
+TODO: fix wireless interface to wlan0
+
 ```
 $ sudo cat /etc/NetworkManager/system-connections/wifi.nmconnection | ssh $(cloud-run ssh debian-bullseye-arm64) tee wifi.nmconnection
 $ ssh $(cloud-run ssh debian-bullseye-arm64)
