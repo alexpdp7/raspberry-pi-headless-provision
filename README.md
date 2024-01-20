@@ -56,7 +56,7 @@ This command requires:
 * `/usr/share/edk2/aarch64/QEMU_EFI.fd` (package `edk2-aarch64` in Arch Linux)
 
 ```
-$ cloud-run run --create-with-base-image https://cloud.debian.org/images/cloud/bullseye/latest/debian-12-generic-arm64.qcow2 --qemu-executable qemu-system-aarch64 --machine virt --cpu cortex-a53 --no-accel --extra-qemu-opts "-bios /usr/share/edk2/aarch64/QEMU_EFI.fd" debian-bullseye-arm64
+$ cloud-run run --create-with-base-image https://cloud.debian.org/images/cloud/bullseye/latest/debian-11-generic-arm64.qcow2 --qemu-executable qemu-system-aarch64 --machine virt --cpu cortex-a53 --no-accel --extra-qemu-opts "-bios /usr/share/edk2/aarch64/QEMU_EFI.fd" debian-bullseye-arm64
 ```
 
 The terminal follows the virtual machine console.
