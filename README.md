@@ -46,7 +46,7 @@ With this, you can use standard Linux images instead of Raspberry Pi-specific im
 
 ## Starting the virtual image
 
-The following command starts an emulated virtual machine from the Debian 12 (Bullseye) generic cloud image.
+The following command starts an emulated virtual machine from the Debian 11 (Bullseye) generic cloud image.
 The generic image includes cloud-init and hardware drivers.
 (The genericcloud image includes only hardware drivers needed in virtualized environments.)
 
@@ -63,6 +63,12 @@ The terminal follows the virtual machine console.
 The process ends if you shut down the virtual machine or kill the qemu process.
 
 On my system, it takes about three minutes and a half for sshd to be ready.
+
+For Debian 12 (Bookworm):
+
+```
+$ cloud-run run --create-with-base-image https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-arm64.qcow2 --qemu-executable qemu-system-aarch64 --machine virt --cpu cortex-a53 --no-accel --extra-qemu-opts "-bios /usr/share/edk2/aarch64/QEMU_EFI.fd" debian-bookworm-arm64
+```
 
 ## Installing wireless and network-manager
 
@@ -81,7 +87,7 @@ $ sudo apt install firmware-brcm80211 firmware-misc-nonfree bluez-firmware raspi
 ### Debian 12
 
 ```
-$ ssh $(cloud-run ssh debian-bullseye-arm64)
+$ ssh $(cloud-run ssh debian-bookworm-arm64)
 $ sudo sed -i "s/^Components: main$/Components: main non-free non-free-firmware contrib/" /etc/apt/sources.list.d/debian.sources
 $ sudo apt update
 $ sudo apt install firmware-brcm80211 firmware-misc-nonfree bluez-firmware raspi-firmware network-manager
