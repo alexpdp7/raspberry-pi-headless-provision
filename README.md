@@ -69,6 +69,17 @@ On my system, it takes about three minutes and a half for sshd to be ready.
 Debian cloud images do not contain the necessary firmware for wireless.
 These commands also install network-manager for simpler wireless network configuration.
 
+### Debian 11
+
+```
+$ ssh $(cloud-run ssh debian-bullseye-arm64)
+$ sudo sed -i "s/main$/main non-free contrib/" /etc/apt/sources.list
+$ sudo apt update
+$ sudo apt install firmware-brcm80211 firmware-misc-nonfree bluez-firmware raspi-firmware network-manager
+```
+
+### Debian 12
+
 ```
 $ ssh $(cloud-run ssh debian-bullseye-arm64)
 $ sudo sed -i "s/^Components: main$/Components: main non-free non-free-firmware contrib/" /etc/apt/sources.list.d/debian.sources
