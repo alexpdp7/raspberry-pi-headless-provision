@@ -75,6 +75,9 @@ $ cloud-run run --create-with-base-image https://cloud.debian.org/images/cloud/b
 Debian cloud images do not contain the necessary firmware for wireless.
 These commands also install network-manager for simpler wireless network configuration.
 
+TODO: check removal of `raspi-firmware`.
+I think this is broken when chainbooting.
+
 ### Debian 11
 
 ```
