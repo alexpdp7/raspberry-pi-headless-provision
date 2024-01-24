@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "rphp"
+version = "0.1.0"
+description = ""
+authors = ["alex <alex@pdp7.net>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+cloud-run = { git = "https://github.com/alexpdp7/cloud-run.git" }
+
+[tool.poetry.scripts]
+rphp = 'rphp:main'
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
