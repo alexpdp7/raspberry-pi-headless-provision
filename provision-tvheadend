@@ -1,0 +1,38 @@
+#!/bin/sh
+
+set -ue
+
+# must be run as root
+
+# firmware for:
+# https://www.amazon.es/dp/B008D8K50Q
+# AUGUST DVB-T210
+# ID 0572:c68a Conexant Systems (Rockwell), Inc. EyeTV Stick
+wget https://github.com/CoreELEC/dvb-firmware/raw/master/firmware/dvb-demod-si2168-d60-01.fw -O /lib/firmware/dvb-demod-si2168-d60-01.fw
+wget https://github.com/CoreELEC/dvb-firmware/raw/master/firmware/dvb-tuner-si2141-a10-01.fw -O /lib/firmware/dvb-tuner-si2141-a10-01.fw
+
+curl -1sLf 'https://dl.cloudsmith.io/public/tvheadend/tvheadend/setup.deb.sh' | bash
+
+debconf-set-selections <<EOF
+tvheadend	tvheadend/admin_password	password	admin
+tvheadend	tvheadend/admin_username	string	admin
+EOF
+
+DEBIAN_FRONTEND=noninteractive apt install -y tvheadend git build-essential
+
+(
+    cd
+    git clone https://github.com/stefantalpalaru/w_scan2.git
+    cd w_scan2
+    ./configure
+    make
+    make install
+)
+
+cat <<EOF >/usr/local/sbin/scan
+#!/bin/sh
+
+w_scan2 -c ES -5 -E 0 >/usr/share/tvheadend/data/dvb-scan/dvb-t/es-Custom
+EOF
+
+chmod +x /usr/local/sbin/scan
