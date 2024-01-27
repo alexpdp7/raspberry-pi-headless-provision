@@ -19,6 +19,7 @@ def main():
     parser.add_argument("--disk", default="2G")
     parser.add_argument("--wifi-file", type=pathlib.Path)
     parser.add_argument("--reuse", action="store_true")
+    parser.add_argument("--script", type=pathlib.Path, action="append")
     args = parser.parse_args()
 
     wifi_networks = []
@@ -99,6 +100,10 @@ def main():
         # more bad escaping :(
         ssh("sh", "-c", f"'echo {configuration_file} | base64 -d | sudo tee {file}'")
         ssh("sudo", "chmod", "600", file)
+
+    for script in args.script:
+        script = base64.b64encode(script.read_bytes()).decode("utf8")
+        ssh("sh", "-c", f"'echo {script} | base64 -d | sudo bash -x'")
 
     if not args.reuse:
         print("Shutting down...")
