@@ -55,7 +55,7 @@ The `provision-tvheadend` file is an example that sets up Tvheadend.
 
 ## Should you do this?
 
-Probalby not.
+Probably not.
 
 Raspberry Pi OS has support to do this configuration headlessly too.
 Because Raspberry Pi OS images already have all the necessary packages preinstalled, alterations required to the image are simpler.
