@@ -1,3 +1,11 @@
+# Alternatives
+
+https://devco.social/users/ripienaar/statuses/112223850685177738
+
+> 1) pi-gen (github.com/RPi-Distro/pi-gen) creates full os images you can just dd write onto an SD card or volume of choice, but is most elaborate
+> 2) rpi-imager (or the desktop equivalent) will drop a /boot/firstrun.sh script when you customize the image for hostname/ssh user, etc. Edit that with customizations. I do this and copy it and a custom cmdline.txt to a freshly imaged volume before boot for my cluster
+> 3) if its a ubuntu pi image, use cloudinit / user-data
+
 # Quick start
 
 This repo provides a command to provision a Raspberry Pi completely headless using cloud images of Linux distributions.
